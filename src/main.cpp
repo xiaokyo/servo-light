@@ -34,9 +34,7 @@ void open_light()
 // 黄灯跳转
 void button_yellow_light_handle(const String &state)
 {
-  BLINKER_LOG("get yellow light state:", state);
   int range = myservo.read();
-  button_yellow_light.print(range == CLOSE_RANGE ? "off" : "on");
 
   // 因为黄灯需要进行两次开关
   if (range == CLOSE_RANGE)
@@ -60,10 +58,7 @@ void button_yellow_light_handle(const String &state)
 // 按下按键即会执行该函数
 void button_switch_light_handle(const String &state)
 {
-  BLINKER_LOG("get switch state: ", state);
   int range = myservo.read();
-  button_switch_light.print(range == CLOSE_RANGE ? "off" : "on");
-
   if (range == CLOSE_RANGE)
   {
     open_light();
@@ -77,7 +72,6 @@ void button_switch_light_handle(const String &state)
 // 小爱同学
 void miotPowerState(const String &state)
 {
-  BLINKER_LOG("need set power state: ", state);
   int range = myservo.read();
 
   if (state == BLINKER_CMD_ON)
@@ -111,10 +105,8 @@ void miotPowerState(const String &state)
 }
 
 // 滑块控制舵机
-
 void slider_handler(int32_t value)
 {
-  BLINKER_LOG("get slider value: ", value); // 获取滑动条数值(0~180)
   myservo.write(value);                     // 将value的值写入舵机 作者：很蓝的蛙 https://www.bilibili.com/read/cv16264450/ 出处：bilibili
 }
 
